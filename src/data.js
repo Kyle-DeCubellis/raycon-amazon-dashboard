@@ -11,11 +11,11 @@ export const products = [
   { sku: "E45", name: "Fitness Earbuds", amazonRating: 4.1, weeklyRating: 4.0, reviews: 1844, bsr: 103, netNew: 12, ratingDelta: 20.8, avgDaily30d: 2.0, status: "WATCH", amazonsChoice: true },
   { sku: "E95", name: "Pro Earbuds", amazonRating: 4.0, weeklyRating: 3.0, reviews: 53, bsr: 789, netNew: 1, ratingDelta: -66.7, avgDaily30d: 0.3, status: "WATCH", amazonsChoice: true },
   { sku: "B42", name: "Bone Conduction HP", amazonRating: 4.2, weeklyRating: 4.29, reviews: 320, bsr: 8, netNew: 13, ratingDelta: 33.9, avgDaily30d: 1.5, status: "WATCH", amazonsChoice: false },
-  { sku: "H10", name: "Bone Conduction HP Pro", amazonRating: 4.6, weeklyRating: 4.67, reviews: 75, bsr: 209, netNew: 4, ratingDelta: -7.1, avgDaily30d: 0.4, status: "GREEN", amazonsChoice: false },
+  { sku: "H10", name: "Essential Headphones", amazonRating: 4.6, weeklyRating: 4.67, reviews: 75, bsr: 209, netNew: 4, ratingDelta: -7.1, avgDaily30d: 0.4, status: "GREEN", amazonsChoice: false },
   { sku: "H20", name: "Everyday Headphones", amazonRating: 4.5, weeklyRating: 3.25, reviews: 1128, bsr: 48, netNew: 4, ratingDelta: -15.4, avgDaily30d: 0.6, status: "GREEN", amazonsChoice: false },
 
 ];
-
+s
 export const weeklyRatings = [
   { week: "Jan 5",  E25: 4.73, E45: 3.47, E95: 4.00, O15: 4.11, O25: 4.20, B42: 4.14, H10: 4.71, H20: 4.36 },
   { week: "Jan 12", E25: 4.22, E45: 3.47, E95: 2.67, O15: 4.00, O25: 3.50, B42: 4.15, H10: 4.43, H20: 4.67 },
