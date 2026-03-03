@@ -4,15 +4,16 @@
 // =====================================================
 
 export const products = [
-  { sku: "O25", name: "Open Earbuds", amazonRating: 4.2, weeklyRating: 2.63, reviews: 635, bsr: 24, netNew: 9, ratingDelta: -19.0, avgDaily30d: 1.0, status: "WATCH" },
-  { sku: "O15", name: "Essential Open Earbuds", amazonRating: 4.1, weeklyRating: 3.43, reviews: 800, bsr: 3, netNew: 35, ratingDelta: -6.2, avgDaily30d: 3.5, status: "WATCH" },
-  { sku: "E25", name: "Everyday Earbuds Classic", amazonRating: 4.3, weeklyRating: 3.35, reviews: 4394, bsr: 40, netNew: 25, ratingDelta: -8.5, avgDaily30d: 3.0, status: "WATCH" },
-  { sku: "E45", name: "Fitness Earbuds", amazonRating: 4.1, weeklyRating: 4.0, reviews: 1844, bsr: 103, netNew: 12, ratingDelta: 20.8, avgDaily30d: 2.0, status: "WATCH" },
-  { sku: "E95", name: "Pro Earbuds", amazonRating: 4.0, weeklyRating: 3.0, reviews: 53, bsr: 789, netNew: 1, ratingDelta: -66.7, avgDaily30d: 0.3, status: "WATCH" },
-  { sku: "B42", name: "Bone Conduction HP", amazonRating: 4.2, weeklyRating: 4.29, reviews: 320, bsr: 8, netNew: 13, ratingDelta: 33.9, avgDaily30d: 1.5, status: "WATCH" },
-  { sku: "H10", name: "Bone Conduction HP Pro", amazonRating: 4.6, weeklyRating: 4.67, reviews: 75, bsr: 209, netNew: 4, ratingDelta: -7.1, avgDaily30d: 0.4, status: "GREEN" },
-  { sku: "H20", name: "Everyday Headphones", amazonRating: 4.5, weeklyRating: 3.25, reviews: 1128, bsr: 48, netNew: 4, ratingDelta: -15.4, avgDaily30d: 0.6, status: "GREEN" },
-  { sku: "E75", name: "Gaming Earbuds", amazonRating: null, weeklyRating: 4.1, reviews: 434, bsr: 481, netNew: 434, ratingDelta: null, avgDaily30d: null, status: "NEW" },
+  { sku: "O25", name: "Open Earbuds", amazonRating: 4.2, weeklyRating: 2.63, reviews: 635, bsr: 24, netNew: 9, ratingDelta: -19.0, avgDaily30d: 1.0, status: "WATCH", amazonsChoice: false },
+  { sku: "O15", name: "Essential Open Earbuds", amazonRating: 4.1, weeklyRating: 3.43, reviews: 800, bsr: 3, netNew: 35, ratingDelta: -6.2, avgDaily30d: 3.5, status: "WATCH", amazonsChoice: true },
+  { sku: "E25", name: "Everyday Earbuds Classic", amazonRating: 4.3, weeklyRating: 3.35, reviews: 4394, bsr: 40, netNew: 25, ratingDelta: -8.5, avgDaily30d: 3.0, status: "GREEN", amazonsChoice: true },
+  { sku: "E75", name: "Impact Earbuds", amazonRating: 4.1, weeklyRating: 4.1, reviews: 1041, bsr: 481, netNew: 434, ratingDelta: null, avgDaily30d: null, status: "WATCH", amazonsChoice: true },
+  { sku: "E45", name: "Fitness Earbuds", amazonRating: 4.1, weeklyRating: 4.0, reviews: 1844, bsr: 103, netNew: 12, ratingDelta: 20.8, avgDaily30d: 2.0, status: "WATCH", amazonsChoice: true },
+  { sku: "E95", name: "Pro Earbuds", amazonRating: 4.0, weeklyRating: 3.0, reviews: 53, bsr: 789, netNew: 1, ratingDelta: -66.7, avgDaily30d: 0.3, status: "WATCH", amazonsChoice: true },
+  { sku: "B42", name: "Bone Conduction HP", amazonRating: 4.2, weeklyRating: 4.29, reviews: 320, bsr: 8, netNew: 13, ratingDelta: 33.9, avgDaily30d: 1.5, status: "WATCH", amazonsChoice: false },
+  { sku: "H10", name: "Bone Conduction HP Pro", amazonRating: 4.6, weeklyRating: 4.67, reviews: 75, bsr: 209, netNew: 4, ratingDelta: -7.1, avgDaily30d: 0.4, status: "GREEN", amazonsChoice: false },
+  { sku: "H20", name: "Everyday Headphones", amazonRating: 4.5, weeklyRating: 3.25, reviews: 1128, bsr: 48, netNew: 4, ratingDelta: -15.4, avgDaily30d: 0.6, status: "GREEN", amazonsChoice: false },
+
 ];
 
 export const weeklyRatings = [
@@ -46,7 +47,8 @@ export const wowDeltas = [
   { sku: "B42", rating: 4.29, ratingDelta: 33.9, reviews: 320, reviewsDelta: 4.1, netNew: 13, bsr: 8, bsrDelta: 5 },
   { sku: "H10", rating: 4.67, ratingDelta: -7.1, reviews: 75, reviewsDelta: 5.3, netNew: 4, bsr: 209, bsrDelta: 73 },
   { sku: "H20", rating: 3.25, ratingDelta: -15.4, reviews: 1128, reviewsDelta: 0.4, netNew: 4, bsr: 48, bsrDelta: 14 },
-  { sku: "E75", rating: 4.10, ratingDelta: null, reviews: 434, reviewsDelta: 100.0, netNew: 434, bsr: 481, bsrDelta: 41 },
+  { sku: "E75", rating: 4.10, ratingDelta: null, reviews: 434, reviewsDelta: null, netNew: 434, bsr: 481, bsrDelta: null },
+
 ];
 
 // Real O25 daily star data - days with reviews only (Jan-Mar 2026)
@@ -62,8 +64,8 @@ export const o25Daily = [
 ].map(d => ({...d, total: d.s1+d.s2+d.s3+d.s4+d.s5}));
 
 export const COLORS = {
-  E25: "#3B82F6", E45: "#F59E0B", E95: "#A855F7", O15: "#EC4899",
+  E25: "#3B82F6", E45: "#F59E0B", E75: "#F97316", E95: "#A855F7", O15: "#EC4899",
   O25: "#EF4444", B42: "#14B8A6", H10: "#6366F1", H20: "#22C55E"
 };
 
-export const ALL_SKUS = ["E25","E45","E95","O15","O25","B42","H10","H20"];
+export const ALL_SKUS = ["E25","E45","E75","E95","O15","O25","B42","H10","H20"];

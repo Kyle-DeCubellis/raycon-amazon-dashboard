@@ -12,7 +12,6 @@ import {
 const statusColor = (s) => {
   if (s === "GREEN") return { bg: "#0D2818", border: "#22C55E", text: "#4ADE80" };
   if (s === "WATCH") return { bg: "#2D2305", border: "#EAB308", text: "#FACC15" };
-  if (s === "NEW") return { bg: "#1E1B4B", border: "#818CF8", text: "#A5B4FC" };
   return { bg: "#2D0A0A", border: "#EF4444", text: "#F87171" };
 };
 
@@ -70,6 +69,13 @@ function Scorecard({ sorted }) {
                 <div>
                   <span style={{ fontSize: 11, fontWeight: 700, color: sc.text, letterSpacing: "0.08em" }}>{p.sku}</span>
                   <p style={{ margin: "2px 0 0", fontSize: 12, color: "#94A3B8" }}>{p.name}</p>
+                  {p.amazonsChoice && (
+                    <span style={{
+                      display: "inline-block", marginTop: 4, fontSize: 9, fontWeight: 700,
+                      padding: "2px 8px", borderRadius: 3, letterSpacing: "0.04em",
+                      background: "#1A2332", color: "#F59E0B", border: "1px solid #F59E0B44"
+                    }}>AMAZON'S CHOICE</span>
+                  )}
                 </div>
                 <span style={{
                   fontSize: 10, fontWeight: 600, padding: "2px 10px", borderRadius: 20,
@@ -96,7 +102,7 @@ function Scorecard({ sorted }) {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
                 {[
                   { l: "Reviews", v: p.reviews?.toLocaleString() ?? "-" },
-                  { l: "Avg/Day 30d", v: p.avgDaily30d?.toFixed(1) ?? "-" },
+                  { l: "Avg/Day 30d", v: p.avgDaily30d != null ? p.avgDaily30d.toFixed(1) : "NEW" },
                   { l: "BSR", v: p.bsr ? `#${p.bsr}` : "-" },
                 ].map((m, i) => (
                   <div key={i}>
@@ -313,7 +319,7 @@ function BSRTracking() {
 
 function WoWDeltas() {
   const sortedDeltas = [...wowDeltas].sort((a, b) => (a.ratingDelta ?? 999) - (b.ratingDelta ?? 999));
-  const barData = [...wowDeltas].filter((d) => d.sku !== "E75").sort((a, b) => b.netNew - a.netNew);
+  const barData = [...wowDeltas].sort((a, b) => b.netNew - a.netNew);
 
   return (
     <div>
@@ -375,7 +381,7 @@ export default function App() {
   const [page, setPage] = useState(0);
 
   const sorted = useMemo(() => {
-    const o = { NEW: 0, WATCH: 1, GREEN: 2 };
+    const o = { WATCH: 0, GREEN: 1 };
     return [...products].sort(
       (a, b) => (o[a.status] ?? 9) - (o[b.status] ?? 9) || (a.weeklyRating ?? 99) - (b.weeklyRating ?? 99)
     );
